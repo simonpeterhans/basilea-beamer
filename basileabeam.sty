@@ -67,6 +67,7 @@
 \definecolor{hcolor}{RGB}{165,215,210} % Color 1
 \definecolor{lcolor}{RGB}{45,55,60} % Color 3
 \definecolor{highlightcolor}{RGB}{210,5,55} % Color 5
+\definecolor{itemcolor}{RGB}{90,180,175}
 
 %% Official color sequence
 \definecolor{bcolor1}{RGB}{165,215,210}
@@ -88,7 +89,7 @@
 \setbeamercolor*{frametitle}{bg=black,fg=black}
 \setbeamercolor*{lineup}{parent=palette line}
 \setbeamercolor*{part title}{bg=black,fg=black}
-\setbeamercolor*{item}{fg=hcolor}
+\setbeamercolor*{item}{fg=itemcolor}
 \setbeamercolor*{page footer}{parent=palette highlight}
 \setbeamercolor*{alerted text}{fg=highlightcolor}
 \hypersetup{colorlinks=false,linkcolor=hcolor,urlcolor=hcolor,citecolor=lcolor}
@@ -275,13 +276,13 @@
 \defbeamertemplate*{frametitle continuation}{decolines theme}{(\insertcontinuationcount)}
 
 % List elements
-\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=1.6ex]{\ulistelementint}}
-\defbeamertemplate{itemize subitem}{image}{\scriptsize\includegraphics[height=1.6ex]{\ulistelementint}}
-\defbeamertemplate{itemize subsubitem}{image}{\tiny\includegraphics[height=1.6ex]{\ulistelementint}}
+%\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=1.6ex]{\ulistelementint}}
+%\defbeamertemplate{itemize subitem}{image}{\scriptsize\includegraphics[height=1.6ex]{\ulistelementint}}
+%\defbeamertemplate{itemize subsubitem}{image}{\tiny\includegraphics[height=1.6ex]{\ulistelementint}}
 
-\setbeamertemplate{itemize item}[image]
-\setbeamertemplate{itemize subitem}[image]
-\setbeamertemplate{itemize subsubitem}[image]
+%\setbeamertemplate{itemize item}[image]
+%\setbeamertemplate{itemize subitem}[image]
+%\setbeamertemplate{itemize subsubitem}[image]
 
 
 % Last slide
