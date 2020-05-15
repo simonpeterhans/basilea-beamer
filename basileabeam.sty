@@ -46,6 +46,11 @@
 \toggletrue{bbHeaderSectionsEnabled} % Default is true, i.e. with header.
 \newcommand{\headerSectionsDisabled}{\togglefalse{bbHeaderSectionsEnabled}}
 
+% Flag to use regular instead of dashed lines.
+\providetoggle{bbSolidLinesEnabled}
+\toggletrue{bbSolidLinesEnabled} % Default is true, i.e. with header.
+\newcommand{\solidLinesDisabled}{\togglefalse{bbSolidLinesEnabled}}
+
 % Required to position the logo on the title page
 \usepackage{tikz}
 
@@ -187,10 +192,15 @@
     \fi%  
     \def\beamer@decolines@truetext{true}%
     \vskip-.25\beamer@leftmargin%
-    
-    \begin{beamercolorbox}[wd=\textwidth,ht=.1ex,dp=0ex]{}%
-        \usebeamercolor[bg]{lineup}\hdashrule{\textwidth}{0.5pt}{1pt 1pt} 
-    \end{beamercolorbox}%
+    \iftoggle{bbSolidLinesEnabled}{
+    	\begin{beamercolorbox}[wd=\textwidth,ht=.1ex,dp=0ex]{}%
+    		\usebeamercolor[bg]{lineup}\rule{\textwidth}{0.5pt}
+    	\end{beamercolorbox}
+    }{
+	    \begin{beamercolorbox}[wd=\textwidth,ht=.1ex,dp=0ex]{}%
+	    	\usebeamercolor[bg]{lineup}\hdashrule{\textwidth}{0.5pt}{1pt 1pt}
+	    \end{beamercolorbox}
+    }
     \vspace{2ex}%
     
     % Authors, institute and date
@@ -226,29 +236,35 @@
 % General frame.
 \defbeamertemplate*{frametitle}{decolines theme}[1][left]
 {
-\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
-\@tempdima=\textwidth%
-\advance\@tempdima by\beamer@leftmargin%
-\advance\@tempdima by\beamer@rightmargin%
-\vbox{}\vskip-.5\beamer@leftmargin%
-\begin{beamercolorbox}[sep=\beamer@leftmargin,#1,wd=\the\@tempdima]{}
-    \usebeamerfont{frametitle}\usebeamercolor[bg]{framesubtitle}%
-    \vbox{}\vskip0ex%
-    \if@tempswa\else\csname beamer@fte#1\endcsname\fi%
-    \strut\insertframetitle\strut\par%
-    {%
-    \ifx\insertframesubtitle\@empty%
-    \else%
-    {\usebeamerfont{framesubtitle}\usebeamercolor[bg]{framesubtitle}\insertframesubtitle\strut\par}%
-    \fi}%
-    \vskip-1ex%
-    \if@tempswa\else\vskip-\beamer@leftmargin\fi
-    \end{beamercolorbox}%
-\def\beamer@decolines@truetext{true}%
-\vskip-.5\beamer@leftmargin%
-\begin{beamercolorbox}[wd=\textwidth,ht=.1ex,dp=0ex]{}%
-    \usebeamercolor[bg]{lineup}\hdashrule{\textwidth}{0.5pt}{1pt 1pt} 
-\end{beamercolorbox}%
+	\ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+	\@tempdima=\textwidth%
+	\advance\@tempdima by\beamer@leftmargin%
+	\advance\@tempdima by\beamer@rightmargin%
+	\vbox{}\vskip-.5\beamer@leftmargin%
+	\begin{beamercolorbox}[sep=\beamer@leftmargin,#1,wd=\the\@tempdima]{}
+		\usebeamerfont{frametitle}\usebeamercolor[bg]{framesubtitle}%
+		\vbox{}\vskip0ex%
+		\if@tempswa\else\csname beamer@fte#1\endcsname\fi%
+		\strut\insertframetitle\strut\par%
+		{%
+			\ifx\insertframesubtitle\@empty%
+			\else%
+			{\usebeamerfont{framesubtitle}\usebeamercolor[bg]{framesubtitle}\insertframesubtitle\strut\par}%
+			\fi}%
+		\vskip-1ex%
+		\if@tempswa\else\vskip-\beamer@leftmargin\fi
+	\end{beamercolorbox}%
+	\def\beamer@decolines@truetext{true}%
+	\vskip-.5\beamer@leftmargin%
+	\iftoggle{bbSolidLinesEnabled}{
+		\begin{beamercolorbox}[wd=\textwidth,ht=.1ex,dp=0ex]{}%
+			\usebeamercolor[bg]{lineup}\rule{\textwidth}{0.5pt}
+		\end{beamercolorbox}
+	}{
+		\begin{beamercolorbox}[wd=\textwidth,ht=.1ex,dp=0ex]{}%
+			\usebeamercolor[bg]{lineup}\hdashrule{\textwidth}{0.5pt}{1pt 1pt}
+		\end{beamercolorbox}
+	}
 }
 
 % Frame title continuations, default
@@ -385,3 +401,4 @@
     \gdef\beamer@notes{}% 
 }
 \makeatother
+
