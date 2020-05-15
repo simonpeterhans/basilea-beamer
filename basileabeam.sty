@@ -23,8 +23,6 @@
 %\newcommand*{\email}[1]{\def\insertemail{#1}}
 \newcommand*{\email}[1]{\ifdefined\email \def\insertemail{#1}\fi}
 
-
-
 % Turn off navigation symbols.
 \setbeamertemplate{navigation symbols}{}
 
@@ -48,8 +46,10 @@
 
 % Flag to use regular instead of dashed lines.
 \providetoggle{bbSolidLinesEnabled}
-\toggletrue{bbSolidLinesEnabled} % Default is true, i.e. with header.
+\toggletrue{bbSolidLinesEnabled} % Default is true, i.e., solid lines.
 \newcommand{\solidLinesDisabled}{\togglefalse{bbSolidLinesEnabled}}
+
+\newcommand{\defaultItemize}{\setbeamertemplate{itemize item}[squarealt]}
 
 % Required to position the logo on the title page
 \usepackage{tikz}
@@ -67,7 +67,7 @@
 \definecolor{hcolor}{RGB}{165,215,210} % Color 1
 \definecolor{lcolor}{RGB}{45,55,60} % Color 3
 \definecolor{highlightcolor}{RGB}{210,5,55} % Color 5
-\definecolor{itemcolor}{RGB}{90,180,175}
+\definecolor{itemcolor}{RGB}{114,192,184}
 
 %% Official color sequence
 \definecolor{bcolor1}{RGB}{165,215,210}
@@ -276,14 +276,13 @@
 \defbeamertemplate*{frametitle continuation}{decolines theme}{(\insertcontinuationcount)}
 
 % List elements
-%\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=1.6ex]{\ulistelementint}}
-%\defbeamertemplate{itemize subitem}{image}{\scriptsize\includegraphics[height=1.6ex]{\ulistelementint}}
-%\defbeamertemplate{itemize subsubitem}{image}{\tiny\includegraphics[height=1.6ex]{\ulistelementint}}
+\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=1.6ex]{\ulistelementint}}
+\defbeamertemplate{itemize subitem}{image}{\scriptsize\includegraphics[height=1.6ex]{\ulistelementint}}
+\defbeamertemplate{itemize subsubitem}{image}{\tiny\includegraphics[height=1.6ex]{\ulistelementint}}
 
-%\setbeamertemplate{itemize item}[image]
-%\setbeamertemplate{itemize subitem}[image]
-%\setbeamertemplate{itemize subsubitem}[image]
-
+\setbeamertemplate{itemize item}[image]
+\setbeamertemplate{itemize subitem}[image]
+\setbeamertemplate{itemize subsubitem}[image]
 
 % Last slide
 \newenvironment{changemargin}[2]{
